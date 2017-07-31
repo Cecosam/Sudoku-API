@@ -1,0 +1,583 @@
+﻿<Window x:Class="Sudoku.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sudoku"
+        mc:Ignorable="d"
+        Title="Sudoku" Height="772" Width="476" ResizeMode="CanMinimize" Name="MainWindowName" PreviewKeyDown="MainWindowName_PreviewKeyDown">
+
+    <Grid Margin="0,0,2,2" Name="MainGrid">
+        <Grid HorizontalAlignment="Left" Height="440" Margin="10,283,0,0" VerticalAlignment="Top" Width="440">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Column="0" Grid.Row="0" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox0" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox1" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox2" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox9" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox10" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox11" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox18" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox19" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox20" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="0" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox3" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox4" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox5" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox12" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox13" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox14" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox21" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox22" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox23" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="0" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="2" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox6" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox7" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox8" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox15" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox16" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox17" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox24" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox25" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox26" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="1" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox27" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox28" PreviewTextInput="CheckIfDigit" HorizontalAlignment="Left" Width="48"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox29" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox36" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox37" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox38" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox45" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox46" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox47" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="1" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox30" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox31" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox32" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox39" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox40" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox41" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox48" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox49" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox50" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="1" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="2" Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox33" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox34" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox35" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox42" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox43" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox44" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox51" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox52" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox53" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="0" Grid.Row="2" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="0" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox54" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox55" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox56" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox63" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox64" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox65" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox72" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox73" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox74" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" Grid.Row="2" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="1" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox57" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox58" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox59" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox66" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox67" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox68" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox75" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox76" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox77" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Grid.Column="2" Grid.Row="2" BorderBrush="#000000" BorderThickness="2">
+                <Grid Grid.Column="2" Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" Grid.Row="0">
+                        <TextBox Grid.Column="0" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox60" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="0">
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox61" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="0">
+                        <TextBox Grid.Column="2" Grid.Row="0" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox62" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="1">
+                        <TextBox Grid.Column="0" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox69" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="1">
+                        <TextBox Grid.Column="1" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox70" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="1">
+                        <TextBox Grid.Column="2" Grid.Row="1" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox71" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="0" Grid.Row="2">
+                        <TextBox Grid.Column="0" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox78" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="1" Grid.Row="2">
+                        <TextBox Grid.Column="1" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox79" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                    <Border Grid.Column="2" Grid.Row="2">
+                        <TextBox Grid.Column="2" Grid.Row="2" Text="" FontSize="35" FontFamily="Verdana" HorizontalContentAlignment="Center" MaxLength="1" Name="TextBox80" PreviewTextInput="CheckIfDigit"></TextBox>
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        <Button x:Name="buttonEasySudoku" Click="GetSudoku"  HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+            <TextBlock>
+                <Underline>E</Underline>asy
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonMediumSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="123,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+            <TextBlock>
+                <Underline>M</Underline>edium
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="236,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+            <TextBlock>
+                <Underline>H</Underline>ard
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonVeryHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="350,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+            <TextBlock>
+                Ver<Underline>y</Underline> Hard
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonSolveSudoku" Click="SolveSudoku" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="213" Height="60" FontFamily="Verdana" FontSize="24">
+            <TextBlock>
+                <Underline>S</Underline>olve Sudoku
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonChecker" Click="CheckIfSudokuIsValid" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Verdana" FontSize="24">
+            <TextBlock>
+                Ho<Underline>w</Underline> am i doing?
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonPrint" Click="PrintSudoku" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Verdana" FontSize="24">
+            <TextBlock>
+                <Underline>P</Underline>rint Sudoku
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="buttonClear" Click="ClearSudoku" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="213" Height="38
+                " FontFamily="Verdana" FontSize="24">
+            <TextBlock>
+                C<Underline>l</Underline>ear
+            </TextBlock>
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Label x:Name="labelHours" Content="Hours" HorizontalAlignment="Left" Margin="248,28,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelMinutes" Content="Minutes" HorizontalAlignment="Left" Margin="308,28,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelSeconds" Content="Seconds" HorizontalAlignment="Left" Margin="368,28,0,0" VerticalAlignment="Top" Width="55" Height="25"/>
+        <TextBox x:Name="textBoxHours" HorizontalAlignment="Left" Height="23" Margin="248,55,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.037,-1"/>
+        <TextBox x:Name="textBoxMinutes" HorizontalAlignment="Left" Height="23" Margin="308,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="1.3,-0.13"/>
+        <TextBox x:Name="textBoxSeconds" HorizontalAlignment="Left" Height="23" Margin="368,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55
+                 " RenderTransformOrigin="-0.684,1.696"/>
+        <CheckBox x:Name="checkBoxHints" Content="Hints" HorizontalAlignment="Left" Margin="284,108,0,0" VerticalAlignment="Top" Height="18" Width="68" FontFamily="Verdana" FontSize="14">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+    </Grid>
+</Window>
+    
