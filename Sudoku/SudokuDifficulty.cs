@@ -106,16 +106,9 @@ namespace Sudoku
         public SudokuCell GetAllPossibleNumbers(int inputRow, int inputCol, SudokuCell[,] inputSudoku)
         {
             InitializeSudoku(inputSudoku);
-            for (int row = 0; row < 9; row++)
-            {
-                for (int col = 0; col < 9; col++)
-                {
-                    if (sudoku[row, col].Value == 0)
-                    {
-                        SetAllPossibleValues(row, col);
-                    }
-                }
-            }
+
+            SetAllPossibleValues(inputRow, inputCol);
+
             return sudoku[inputRow, inputCol];
         }
         public bool DEBUG_CheckIfThereIsValueZeroWithZeroPossibilities()

@@ -12,3 +12,17 @@ D:\DEV\C# Test Projects\Sudoku\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.C
 D:\DEV\C# Test Projects\Sudoku\Sudoku\obj\Debug\Sudoku.exe
 D:\DEV\C# Test Projects\Sudoku\Sudoku\obj\Debug\Sudoku.pdb
 D:\DEV\C# Test Projects\Sudoku\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+D:\Sudoku-API\Sudoku\bin\Debug\Sudoku.exe.config
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.exe
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.pdb
+D:\Sudoku-API\Sudoku\bin\Debug\Sudoku.exe
+D:\Sudoku-API\Sudoku\bin\Debug\Sudoku.pdb
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+D:\Sudoku-API\Sudoku\obj\Debug\MainWindow.g.cs
+D:\Sudoku-API\Sudoku\obj\Debug\App.g.cs
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku_MarkupCompile.lref
+D:\Sudoku-API\Sudoku\obj\Debug\MainWindow.baml
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.g.resources
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
+D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
