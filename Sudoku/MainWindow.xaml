@@ -501,7 +501,7 @@
         </Button>
         <Button x:Name="buttonChecker" Click="CheckIfSudokuIsValid" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Verdana" FontSize="24">
             <TextBlock>
-                Ho<Underline>w</Underline> am i doing?
+                Ho<Underline>w</Underline> am I doing?
             </TextBlock>
             <Button.Style>
                 <Style TargetType="{x:Type Button}">

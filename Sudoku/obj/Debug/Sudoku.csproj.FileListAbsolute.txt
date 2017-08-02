@@ -26,3 +26,17 @@ D:\Sudoku-API\Sudoku\obj\Debug\MainWindow.baml
 D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.g.resources
 D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
 D:\Sudoku-API\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\bin\Debug\Sudoku.exe.config
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.exe
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.pdb
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\bin\Debug\Sudoku.exe
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\bin\Debug\Sudoku.pdb
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.csprojResolveAssemblyReference.cache
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\MainWindow.g.cs
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\App.g.cs
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku_MarkupCompile.cache
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku_MarkupCompile.lref
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\MainWindow.baml
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.g.resources
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.Properties.Resources.resources
+C:\Users\Ceco\Documents\GitHub\Sudoku-API\Sudoku\obj\Debug\Sudoku.csproj.GenerateResource.Cache

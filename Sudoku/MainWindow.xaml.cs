@@ -40,7 +40,7 @@ namespace Sudoku
     typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
 
             connection = new SqlConnection();
-            connection.ConnectionString = CONNECTION_STRING;            
+            connection.ConnectionString = CONNECTION_STRING;
         }
 
         private void CheckIfDigit(object sender, TextCompositionEventArgs e)
@@ -347,7 +347,6 @@ namespace Sudoku
         {
             var browser = (System.Windows.Forms.WebBrowser)sender;
             var document = browser.Document;
-            var isOnline = true;
 
             var counter = 0;
             for (int i = 1; i <= 81; i++)
@@ -364,38 +363,56 @@ namespace Sudoku
 
             var sudokuAsString = string.Empty;
 
-            try
+            var rnd = new Random();
+            for (int start = 100; start < 600; start += 100)
             {
-                connection.Open();
-                var queryString = string.Format(string.Format("SELECT TOP 1 SudokuValues,Difficulty FROM Sudoku where Difficulty = {0} ORDER BY NEWID()", lastSudokuDifficulty));
-                SqlCommand query = new SqlCommand(queryString, connection);
-                SqlDataReader reader = query.ExecuteReader();
-                reader.Read();
-                sudokuAsString = reader[0] as string;
-            }
-            catch (Exception)
-            {
-                isOnline = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+                try
+                {
+                    connection.Open();
+                    var queryString = string.Format(string.Format("SELECT TOP 1 SudokuValues,Difficulty FROM Sudoku where Difficulty = {0} ORDER BY NEWID()", lastSudokuDifficulty));
+                    SqlCommand query = new SqlCommand(queryString, connection);
+                    SqlDataReader reader = query.ExecuteReader();
+                    reader.Read();
+                    sudokuAsString = reader[0] as string;
+                }
+                catch (Exception)
+                {
+                    
+                    if (lastSudokuDifficulty == 1)
+                    {
+                        sudokuAsString = PredefinedEasySudokus.GetPredefinedSudokuEasy(rnd.Next(0, MAX_PREDEFINED_SUDOKUS));
+                    }
+                    if (lastSudokuDifficulty == 2)
+                    {
+                        sudokuAsString = PredefinedMediumSudokus.GetPredefinedSudokuMedium(rnd.Next(0, MAX_PREDEFINED_SUDOKUS));
+                    }
+                    if (lastSudokuDifficulty == 4)
+                    {
+                        sudokuAsString = PredefinedHardSudokus.GetPredefinedSudokuHard(rnd.Next(0, MAX_PREDEFINED_SUDOKUS));
+                    }
+                    if (lastSudokuDifficulty == 8)
+                    {
+                        sudokuAsString = PredefinedVeryHardSudokus.GetPredefinedSudokuVeryHard(rnd.Next(0, 100));
+                    }
+                }
+                finally
+                {
+                    connection.Close();
+                }
 
-            if (isOnline)
-            {
+
                 for (int i = 1; i <= 81; i++)
                 {
                     if (sudokuAsString[i - 1] != '0')
                     {
-                        document.GetElementById("textBox" + (i + 100)).InnerText = sudokuAsString[i - 1].ToString();
+                        document.GetElementById("textBox" + (i + start)).InnerText = sudokuAsString[i - 1].ToString();
                     }
                 }
             }
 
             if (browser.ReadyState.Equals(System.Windows.Forms.WebBrowserReadyState.Complete))
             {
-                browser.ShowPrintDialog();
+                browser.ShowPrintPreviewDialog();
             }
         }
 
@@ -595,9 +612,9 @@ namespace Sudoku
                     }
                 }
             }
-            
-            
-            
+
+
+
             animation.To = Color.FromRgb(252, 237, 232);
             animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
             textBox.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
