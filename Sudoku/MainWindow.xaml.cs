@@ -108,6 +108,11 @@ namespace Sudoku
         }
         private void GetSudoku(object sender, RoutedEventArgs e)
         {
+            if (lastSudokuDifficulty == 0)
+            {
+                ShowDisabledItems();
+            }
+
             var sudokuAsString = string.Empty;
             var difficulty = 0;
 
@@ -175,23 +180,23 @@ namespace Sudoku
                 var textBox = this.FindName("TextBox" + counter) as TextBox;
                 textBox.Text = string.Empty;
                 textBox.IsReadOnly = false;
-                textBox.Background = new SolidColorBrush(Color.FromRgb(237, 249, 240));
+                textBox.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                 if (sudokuAsString[index] != '0')
                 {
                     textBox.IsReadOnly = true;
-                    textBox.Background = new SolidColorBrush(Color.FromRgb(229, 247, 215));
+                    textBox.Background = new SolidColorBrush(Color.FromRgb(222, 227, 229));
                     textBox.Text = sudokuAsString[index].ToString();
                 }
                 counter++;
             }
 
-            StartDispatchTimer();
+            StartDispatchTimer();           
 
             stopWatch.Restart();
-        }
+        }        
 
         private void StartDispatchTimer()
-        {
+        {            
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(StartClock);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -227,7 +232,7 @@ namespace Sudoku
 
             if (lastSudokuDifficulty == 0)
             {
-                MessageBox.Show("First you must generate sudoku!");
+                MessageBox.Show("You must first generate a sudoku!");
                 return;
             }
 
@@ -265,7 +270,7 @@ namespace Sudoku
         {
             if (lastSudokuDifficulty == 0)
             {
-                MessageBox.Show("First you must generate sudoku!");
+                MessageBox.Show("You must first generate a sudoku!");
                 return;
             }
 
@@ -307,7 +312,7 @@ namespace Sudoku
 
             if (lastSudokuDifficulty == 0)
             {
-                MessageBox.Show("First you must generate sudoku!");
+                MessageBox.Show("You must first generate a sudoku!");
                 return;
             }
 
@@ -334,7 +339,7 @@ namespace Sudoku
         {
             if (lastSudokuDifficulty == 0)
             {
-                MessageBox.Show("First you must generate sudoku!");
+                MessageBox.Show("You must first generate a sudoku!");
                 return;
             }
             System.Windows.Forms.WebBrowser browser = new System.Windows.Forms.WebBrowser();
@@ -377,7 +382,7 @@ namespace Sudoku
                 }
                 catch (Exception)
                 {
-                    
+
                     if (lastSudokuDifficulty == 1)
                     {
                         sudokuAsString = PredefinedEasySudokus.GetPredefinedSudokuEasy(rnd.Next(0, MAX_PREDEFINED_SUDOKUS));
@@ -480,7 +485,11 @@ namespace Sudoku
         private void AddColors()
         {
             //Grid Color
-            (FindName("MainGrid") as Grid).Background = new SolidColorBrush(Color.FromRgb(224, 250, 252));
+            var mainWindow = (FindName("MainWindowName") as Window);
+            mainWindow.AllowsTransparency = true;
+            mainWindow.WindowStyle = WindowStyle.None;
+            mainWindow.Background = new SolidColorBrush(Color.FromRgb(237, 240, 242));
+            mainWindow.Background.Opacity = 0.95;
 
             //Buttons Color And Mouse Events
             AddColorAndMouseEventsToButton("buttonEasySudoku");
@@ -491,33 +500,76 @@ namespace Sudoku
             AddColorAndMouseEventsToButton("buttonChecker");
             AddColorAndMouseEventsToButton("buttonPrint");
             AddColorAndMouseEventsToButton("buttonClear");
+            AddColorAndMouseEventsToButton("MinimizeButton");
+            AddColorAndMouseEventsToButton("CloseButton");
+
+            StartAsDisabledButton("buttonSolveSudoku");
+            StartAsDisabledButton("buttonChecker");
+            StartAsDisabledButton("buttonPrint");
+            StartAsDisabledButton("buttonClear");
 
             //TextBoxes Color
             for (int i = 0; i < 81; i++)
             {
                 var textBox = FindName("TextBox" + i) as TextBox;
-                textBox.Background = new SolidColorBrush(Color.FromRgb(237, 249, 240));
+                textBox.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                textBox.BorderBrush = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+                textBox.IsEnabled = false;
+                textBox.Opacity = 0.7;
                 textBox.MouseEnter += new MouseEventHandler(EnterTextBox);
                 textBox.MouseLeave += new MouseEventHandler(LeaveTextBox);
             }
 
+            //TimeBoxes
             TimeTextBoxesColors("textBoxHours");
             TimeTextBoxesColors("textBoxMinutes");
             TimeTextBoxesColors("textBoxSeconds");
+            DisableLabel("labelHours");
+            DisableLabel("labelMinutes");
+            DisableLabel("labelSeconds");
+
+            //DisableCheckbox
+            DisableCheckbox("checkBoxHints");
+        }
+
+        
+
+        private void StartAsDisabledButton(string name)
+        {
+            var button = FindName(name) as Button;
+            //button.Background.Opacity = 0.001;
+            //button.Foreground = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+            //button.Foreground.Opacity = 0.001;
+            button.Opacity = 0.001;
+            button.IsEnabled = false;
         }
 
         private void TimeTextBoxesColors(string input)
         {
             TextBox textBox = FindName(input) as TextBox;
             textBox.BorderThickness = new Thickness(0);
-            textBox.Background = new SolidColorBrush(Color.FromRgb(224, 250, 252));
+            textBox.Background = new SolidColorBrush(Color.FromRgb(222, 228, 229));
+            textBox.IsReadOnly = true;
+            textBox.Background.Opacity = 0.005;
             textBox.TextAlignment = TextAlignment.Center;
+        }
+        private void DisableLabel(string input)
+        {
+            var label = FindName(input) as Label;
+            label.Opacity = 0.001;
+        }
+        private void DisableCheckbox(string input)
+        {
+            var checkBox = FindName(input) as CheckBox;
+            checkBox.Opacity = 0.001;
+            checkBox.IsEnabled = false;
         }
 
         private void AddColorAndMouseEventsToButton(string buttonName)
         {
             Button button = FindName(buttonName) as Button;
-            button.Background = new SolidColorBrush(Color.FromRgb(237, 249, 249));
+            button.BorderThickness = new Thickness(0);
+            button.Background = new SolidColorBrush(Color.FromRgb(222, 227, 229));
             button.MouseEnter += new MouseEventHandler(EnterButton);
             button.MouseLeave += new MouseEventHandler(LeaveButton);
 
@@ -528,7 +580,7 @@ namespace Sudoku
             ColorAnimation animation = new ColorAnimation();
             var button = sender as Button;
 
-            animation.To = Color.FromRgb(237, 249, 249);
+            animation.To = Color.FromRgb(222, 227, 229);
             animation.Duration = new Duration(TimeSpan.FromSeconds(1));
             button.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
         }
@@ -538,7 +590,7 @@ namespace Sudoku
             ColorAnimation animation = new ColorAnimation();
             var button = sender as Button;
 
-            animation.To = Color.FromRgb(252, 237, 232);
+            animation.To = Color.FromRgb(174, 203, 232);
             animation.Duration = new Duration(TimeSpan.FromSeconds(1));
             button.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
         }
@@ -550,11 +602,11 @@ namespace Sudoku
 
             if (textBox.IsReadOnly == true)
             {
-                animation.To = Color.FromRgb(229, 247, 215);
+                animation.To = Color.FromRgb(222, 227, 229);
             }
             else
             {
-                animation.To = Color.FromRgb(237, 249, 240);
+                animation.To = Color.FromRgb(255, 255, 255);
             }
 
             textBox.ToolTip = null;
@@ -602,7 +654,7 @@ namespace Sudoku
                         var result = string.Join(" ", outputList);
 
                         var toolTip = new ToolTip();
-                        toolTip.Background = new SolidColorBrush(Color.FromRgb(224, 250, 252));
+                        toolTip.Background = new SolidColorBrush(Color.FromRgb(255, 250, 252));
                         toolTip.Content = string.Format("You can put those numbers: {0}!", result);
                         textBox.ToolTip = toolTip;
                     }
@@ -615,9 +667,88 @@ namespace Sudoku
 
 
 
-            animation.To = Color.FromRgb(252, 237, 232);
+            animation.To = Color.FromRgb(227, 232, 234);
             animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
             textBox.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+        }
+
+        private void ShowDisabledItems()
+        {
+            for (int i = 0; i < 81; i++)
+            {
+                var textBox = FindName("TextBox" + i) as TextBox;
+                textBox.IsEnabled = true;
+
+            }
+
+            EnableDisabledButton("buttonSolveSudoku");
+            EnableDisabledButton("buttonChecker");
+            EnableDisabledButton("buttonPrint");
+            EnableDisabledButton("buttonClear");
+
+            EnableLabel("labelHours");
+            EnableLabel("labelMinutes");
+            EnableLabel("labelSeconds");
+
+            EnableCheckbox("checkBoxHints");
+        }
+
+        private void EnableLabel(string input)
+        {
+            var label = FindName(input) as Label;
+            Storyboard storyboard = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = 1.0;
+            animation.Duration = new Duration(TimeSpan.FromSeconds(2.0));
+            Storyboard.SetTargetName(animation, label.Name);
+            Storyboard.SetTargetProperty(animation, new PropertyPath(Control.OpacityProperty));
+            storyboard.Children.Add(animation);
+            storyboard.Begin(this);            
+        }
+        private void EnableDisabledButton(string name)
+        {
+            var button = FindName(name) as Button;
+            Storyboard storyboard = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = 1.0;
+            animation.Duration = new Duration(TimeSpan.FromSeconds(2.0));
+            Storyboard.SetTargetName(animation, button.Name);
+            Storyboard.SetTargetProperty(animation, new PropertyPath(Control.OpacityProperty));
+            storyboard.Children.Add(animation);
+            storyboard.Begin(this);
+
+            button.IsEnabled = true;
+        }
+
+        private void EnableCheckbox(string input)
+        {
+            var checkBox = FindName(input) as CheckBox;
+            Storyboard storyboard = new Storyboard();
+            DoubleAnimation animation = new DoubleAnimation();
+            animation.To = 1.0;
+            animation.Duration = new Duration(TimeSpan.FromSeconds(2.0));
+            Storyboard.SetTargetName(animation, checkBox.Name);
+            Storyboard.SetTargetProperty(animation, new PropertyPath(Control.OpacityProperty));
+            storyboard.Children.Add(animation);
+            storyboard.Begin(this);
+
+            checkBox.IsEnabled = true;
+        }
+        #endregion
+        #region Window Controls
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                this.DragMove();
+        }
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
         }
         #endregion
     }

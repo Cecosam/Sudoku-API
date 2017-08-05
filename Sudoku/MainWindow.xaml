@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sudoku"
         mc:Ignorable="d"
-        Title="Sudoku" Height="772" Width="476" ResizeMode="CanMinimize" Name="MainWindowName" PreviewKeyDown="MainWindowName_PreviewKeyDown">
-
-    <Grid Margin="0,0,2,2" Name="MainGrid">
+        Title="Sudoku" Height="735" Width="463" ResizeMode="CanMinimize" Name="MainWindowName" PreviewKeyDown="MainWindowName_PreviewKeyDown" MouseDown="Window_MouseDown">
+    <Grid Margin="0,0,2,2">
         <Grid HorizontalAlignment="Left" Height="440" Margin="10,283,0,0" VerticalAlignment="Top" Width="440">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -389,7 +388,7 @@
                 </Grid>
             </Border>
         </Grid>
-        <Button x:Name="buttonEasySudoku" Click="GetSudoku"  HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+        <Button x:Name="buttonEasySudoku" Click="GetSudoku"  HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 <Underline>E</Underline>asy
             </TextBlock>
@@ -398,7 +397,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -411,7 +410,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonMediumSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="123,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+        <Button x:Name="buttonMediumSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="123,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 <Underline>M</Underline>edium
             </TextBlock>
@@ -420,7 +419,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -433,7 +432,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="236,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+        <Button x:Name="buttonHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="236,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 <Underline>H</Underline>ard
             </TextBlock>
@@ -442,7 +441,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -455,7 +454,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonVeryHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="350,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Verdana" FontSize="18">
+        <Button x:Name="buttonVeryHardSudoku" Click="GetSudoku" HorizontalAlignment="Left" Margin="350,215,0,0" VerticalAlignment="Top" Width="100" Height="50" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 Ver<Underline>y</Underline> Hard
             </TextBlock>
@@ -464,7 +463,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -477,7 +476,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonSolveSudoku" Click="SolveSudoku" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="213" Height="60" FontFamily="Verdana" FontSize="24">
+        <Button x:Name="buttonSolveSudoku" Click="SolveSudoku" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 <Underline>S</Underline>olve Sudoku
             </TextBlock>
@@ -486,7 +485,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -499,7 +498,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonChecker" Click="CheckIfSudokuIsValid" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Verdana" FontSize="24">
+        <Button x:Name="buttonChecker" Click="CheckIfSudokuIsValid" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 Ho<Underline>w</Underline> am I doing?
             </TextBlock>
@@ -508,7 +507,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -521,7 +520,7 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonPrint" Click="PrintSudoku" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Verdana" FontSize="24">
+        <Button x:Name="buttonPrint" Click="PrintSudoku" HorizontalAlignment="Left" Margin="236,127,0,0" VerticalAlignment="Top" Width="213" Height="38" FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 <Underline>P</Underline>rint Sudoku
             </TextBlock>
@@ -530,7 +529,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -543,8 +542,8 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Button x:Name="buttonClear" Click="ClearSudoku" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="213" Height="38
-                " FontFamily="Verdana" FontSize="24">
+        <Button x:Name="buttonClear" Click="ClearSudoku" HorizontalAlignment="Left" Margin="236,170,0,0" VerticalAlignment="Top" Width="213" Height="38
+                " FontFamily="Open Sans" FontSize="18">
             <TextBlock>
                 C<Underline>l</Underline>ear
             </TextBlock>
@@ -553,7 +552,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black">
                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                 </Border>
                             </ControlTemplate>
@@ -566,18 +565,56 @@
                 </Style>
             </Button.Style>
         </Button>
-        <Label x:Name="labelHours" Content="Hours" HorizontalAlignment="Left" Margin="248,28,0,0" VerticalAlignment="Top" Width="55"/>
-        <Label x:Name="labelMinutes" Content="Minutes" HorizontalAlignment="Left" Margin="308,28,0,0" VerticalAlignment="Top" Width="55"/>
-        <Label x:Name="labelSeconds" Content="Seconds" HorizontalAlignment="Left" Margin="368,28,0,0" VerticalAlignment="Top" Width="55" Height="25"/>
-        <TextBox x:Name="textBoxHours" HorizontalAlignment="Left" Height="23" Margin="248,55,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.037,-1"/>
-        <TextBox x:Name="textBoxMinutes" HorizontalAlignment="Left" Height="23" Margin="308,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="1.3,-0.13"/>
-        <TextBox x:Name="textBoxSeconds" HorizontalAlignment="Left" Height="23" Margin="368,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55
+        <Label x:Name="labelHours" Content="Hours" HorizontalAlignment="Left" Margin="248,51,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelMinutes" Content="Minutes" HorizontalAlignment="Left" Margin="308,51,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label x:Name="labelSeconds" Content="Seconds" HorizontalAlignment="Left" Margin="368,52,0,0" VerticalAlignment="Top" Width="55" Height="25"/>
+        <TextBox x:Name="textBoxHours" HorizontalAlignment="Left" Height="23" Margin="248,82,0,0" TextWrapping="Wrap" Text="&#xD;&#xA;" VerticalAlignment="Top" Width="55" RenderTransformOrigin="0.037,-1"/>
+        <TextBox x:Name="textBoxMinutes" HorizontalAlignment="Left" Height="23" Margin="308,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" RenderTransformOrigin="1.3,-0.13"/>
+        <TextBox x:Name="textBoxSeconds" HorizontalAlignment="Left" Height="23" Margin="368,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55
                  " RenderTransformOrigin="-0.684,1.696"/>
-        <CheckBox x:Name="checkBoxHints" Content="Hints" HorizontalAlignment="Left" Margin="284,108,0,0" VerticalAlignment="Top" Height="18" Width="68" FontFamily="Verdana" FontSize="14">
+        <CheckBox x:Name="checkBoxHints" Content="Hints" HorizontalAlignment="Left" Margin="76,79,0,0" VerticalAlignment="Top" Height="18" Width="68" FontFamily="Open Sans" FontSize="10">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="2" ScaleY="2" />
             </CheckBox.LayoutTransform>
         </CheckBox>
+        <Button x:Name="CloseButton" Content="X" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top" Width="25" Height="25" RenderTransformOrigin="0.107,1.409" FontFamily="Open Sans" FontSize="16"  Click="CloseWindow">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button x:Name="MinimizeButton" Click="MinimizeWindow" Content="_" HorizontalAlignment="Left" Margin="390,10,0,0" VerticalAlignment="Top" Width="25" Height="25" RenderTransformOrigin="0.107,1.409" FontFamily="Open Sans" FontWeight="Bold" FontSize="16">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" >
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
     
