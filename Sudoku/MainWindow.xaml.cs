@@ -181,9 +181,10 @@ namespace Sudoku
                 textBox.Text = string.Empty;
                 textBox.IsReadOnly = false;
                 textBox.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                textBox.IsEnabled = true;
                 if (sudokuAsString[index] != '0')
                 {
-                    textBox.IsReadOnly = true;
+                    textBox.IsReadOnly = true;                   
                     textBox.Background = new SolidColorBrush(Color.FromRgb(222, 227, 229));
                     textBox.Text = sudokuAsString[index].ToString();
                 }
@@ -261,6 +262,7 @@ namespace Sudoku
                     var textBox = this.FindName("TextBox" + counter) as TextBox;
                     textBox.Text = string.Empty;
                     textBox.Text = sudokuToSolve[row, col].Value.ToString();
+                    textBox.IsEnabled = false;
                     counter++;
                 }
             }
@@ -417,7 +419,7 @@ namespace Sudoku
 
             if (browser.ReadyState.Equals(System.Windows.Forms.WebBrowserReadyState.Complete))
             {
-                browser.ShowPrintPreviewDialog();
+                browser.ShowPrintDialog();
             }
         }
 
@@ -501,7 +503,7 @@ namespace Sudoku
             AddColorAndMouseEventsToButton("buttonPrint");
             AddColorAndMouseEventsToButton("buttonClear");
             AddColorAndMouseEventsToButton("MinimizeButton");
-            AddColorAndMouseEventsToButton("CloseButton");
+            AddColorAndMouseEventsToCloseButton("CloseButton");
 
             StartAsDisabledButton("buttonSolveSudoku");
             StartAsDisabledButton("buttonChecker");
@@ -521,9 +523,10 @@ namespace Sudoku
             }
 
             //TimeBoxes
-            TimeTextBoxesColors("textBoxHours");
-            TimeTextBoxesColors("textBoxMinutes");
-            TimeTextBoxesColors("textBoxSeconds");
+            AddTimeTextBoxesColorsAndDisableThem("textBoxHours");
+            AddTimeTextBoxesColorsAndDisableThem("textBoxMinutes");
+            AddTimeTextBoxesColorsAndDisableThem("textBoxSeconds");
+
             DisableLabel("labelHours");
             DisableLabel("labelMinutes");
             DisableLabel("labelSeconds");
@@ -544,14 +547,16 @@ namespace Sudoku
             button.IsEnabled = false;
         }
 
-        private void TimeTextBoxesColors(string input)
+        private void AddTimeTextBoxesColorsAndDisableThem(string input)
         {
             TextBox textBox = FindName(input) as TextBox;
             textBox.BorderThickness = new Thickness(0);
             textBox.Background = new SolidColorBrush(Color.FromRgb(222, 228, 229));
             textBox.IsReadOnly = true;
             textBox.Background.Opacity = 0.005;
+            textBox.Opacity = 0.005;
             textBox.TextAlignment = TextAlignment.Center;
+            textBox.IsEnabled = false;
         }
         private void DisableLabel(string input)
         {
@@ -575,12 +580,32 @@ namespace Sudoku
 
         }
 
+        private void AddColorAndMouseEventsToCloseButton(string buttonName)
+        {
+            Button button = FindName(buttonName) as Button;
+            button.BorderThickness = new Thickness(0);
+            button.Background = new SolidColorBrush(Color.FromRgb(222, 227, 229));
+            button.MouseEnter += new MouseEventHandler(EnterCloseButton);
+            button.MouseLeave += new MouseEventHandler(LeaveButton);
+        }
+
+
         private void LeaveButton(object sender, MouseEventArgs e)
         {
             ColorAnimation animation = new ColorAnimation();
             var button = sender as Button;
 
             animation.To = Color.FromRgb(222, 227, 229);
+            animation.Duration = new Duration(TimeSpan.FromSeconds(1));
+            button.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+        }
+
+        private void EnterCloseButton(object sender, MouseEventArgs e)
+        {
+            ColorAnimation animation = new ColorAnimation();
+            var button = sender as Button;
+
+            animation.To = Color.FromRgb(226, 29, 29);
             animation.Duration = new Duration(TimeSpan.FromSeconds(1));
             button.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
         }
@@ -690,9 +715,18 @@ namespace Sudoku
             EnableLabel("labelMinutes");
             EnableLabel("labelSeconds");
 
+            EnableTimeTextBoxButton("textBoxHours");
+            EnableTimeTextBoxButton("textBoxMinutes");
+            EnableTimeTextBoxButton("textBoxSeconds");
+
             EnableCheckbox("checkBoxHints");
         }
-
+        private void EnableTimeTextBoxButton(string input)
+        {
+            var textBox = FindName(input) as TextBox;
+            textBox.Opacity = 1.0;
+            textBox.IsEnabled = true;
+        }
         private void EnableLabel(string input)
         {
             var label = FindName(input) as Label;
