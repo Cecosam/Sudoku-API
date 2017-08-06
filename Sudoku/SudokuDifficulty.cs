@@ -160,17 +160,45 @@ namespace Sudoku
                 }
             }
         }
-        public void SetAllPossibleValues(int row, int col)
+
+        public List<SudokuCell> GetAllCellsWithError(SudokuCell[,] inputSudoku, bool[,] inputCells,bool canBeSolved = true)
+        {
+            var result = new List<SudokuCell>(); 
+            InitializeSudoku(inputSudoku);
+            for (int row = 0; row < 9; row++)
+            {
+                for (int col = 0; col < 9; col++)
+                {
+                    if (inputCells[row,col] == false && sudoku[row,col].Value != 0)
+                    {
+                        SetAllPossibleValues(row, col, sudoku[row, col]);
+                        if (!sudoku[row, col].PossibleValues.Contains(sudoku[row, col].Value))
+                        {                            
+                            result.Add(inputSudoku[row, col]);
+                        }
+                        if (!canBeSolved)
+                        {
+                            if (sudoku[row, col].PossibleValues.Contains(sudoku[row, col].Value) && sudoku[row, col].PossibleValues.Count != 1)
+                            {
+                                result.Add(inputSudoku[row, col]);
+                            }
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        public void SetAllPossibleValues(int row, int col, SudokuCell cell = null)
         {
             var currentCellPossibleValues = this.sudoku[row, col].PossibleValues;
 
-            var valuesOnRow = GetValuesOnRow(row);
-            var valuesOnCol = GetValuesOnCol(col);
+            var valuesOnRow = GetValuesOnRow(row, cell);
+            var valuesOnCol = GetValuesOnCol(col, cell);
 
             var startRow = (row / 3) * 3;
             var startCol = (col / 3) * 3;
 
-            var valuesOnBox = GetValuesInBox(startRow, startCol);
+            var valuesOnBox = GetValuesInBox(startRow, startCol, cell);
 
             foreach (var item in valuesOnBox)
             {
@@ -188,14 +216,14 @@ namespace Sudoku
             }
         }
 
-        private HashSet<int> GetValuesInBox(int startRow, int startCol)
+        private HashSet<int> GetValuesInBox(int startRow, int startCol, SudokuCell cell)
         {
             var result = new HashSet<int>();
             for (int row = startRow; row < startRow + 3; row++)
             {
                 for (int col = startCol; col < startCol + 3; col++)
                 {
-                    if (this.sudoku[row, col].Value != 0)
+                    if (this.sudoku[row, col].Value != 0 && !this.sudoku[row, col].Equals(cell))
                     {
                         result.Add(this.sudoku[row, col].Value);
                     }
@@ -204,24 +232,24 @@ namespace Sudoku
             return result;
         }
 
-        private HashSet<int> GetValuesOnCol(int col)
+        private HashSet<int> GetValuesOnCol(int col, SudokuCell cell)
         {
             var result = new HashSet<int>();
             for (int row = 0; row < 9; row++)
             {
-                if (this.sudoku[row, col].Value != 0)
+                if (this.sudoku[row, col].Value != 0 && !this.sudoku[row, col].Equals(cell))
                 {
                     result.Add(this.sudoku[row, col].Value);
                 }
             }
             return result;
         }
-        private HashSet<int> GetValuesOnRow(int row)
+        private HashSet<int> GetValuesOnRow(int row, SudokuCell cell)
         {
             var result = new HashSet<int>();
             for (int col = 0; col < 9; col++)
             {
-                if (this.sudoku[row, col].Value != 0)
+                if (this.sudoku[row, col].Value != 0 && !this.sudoku[row, col].Equals(cell))
                 {
                     result.Add(this.sudoku[row, col].Value);
                 }
@@ -316,7 +344,7 @@ namespace Sudoku
             return retsult;
         }
 
-
+        
     }
 }
 

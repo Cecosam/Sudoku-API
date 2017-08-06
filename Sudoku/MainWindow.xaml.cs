@@ -320,6 +320,35 @@ namespace Sudoku
 
             if (!sudokuValidator.CheckIfSudokuIsValid(sudokuToSolve))
             {
+                var inputCells = new bool[9, 9];
+                var sudoku = new SudokuCell[9, 9];
+
+                counter = 0;
+                for (int row = 0; row < 9; row++)
+                {
+                    for (int col = 0; col < 9; col++)
+                    {
+                        var element = this.FindName("TextBox" + counter) as TextBox;
+                        int number;
+                        var isParsed = int.TryParse(element.Text, out number);
+                        sudoku[row, col] = new SudokuCell(row, col);
+                        if (isParsed && element.IsReadOnly == false)
+                        {
+                            sudoku[row, col].Value = number;
+                        }
+                        else
+                        {
+                            sudoku[row, col].Value = number;
+                            inputCells[row, col] = true;
+                        }
+                        counter++;
+                    }
+                }
+
+                var listWithCellsWithError = sudokuSolver.GetAllCellsWithError(sudoku, inputCells);
+
+                ColorTheCellsWithError(listWithCellsWithError);
+
                 MessageBox.Show("You have some errors!");
                 return;
             }
@@ -330,12 +359,40 @@ namespace Sudoku
             }
             catch (ArgumentException)
             {
+                var inputCells = new bool[9, 9];
+                var sudoku = new SudokuCell[9, 9];
+
+                counter = 0;
+                for (int row = 0; row < 9; row++)
+                {
+                    for (int col = 0; col < 9; col++)
+                    {
+                        var element = this.FindName("TextBox" + counter) as TextBox;
+                        int number;
+                        var isParsed = int.TryParse(element.Text, out number);
+                        sudoku[row, col] = new SudokuCell(row, col);
+                        if (isParsed && element.IsReadOnly == false)
+                        {
+                            sudoku[row, col].Value = number;
+                        }
+                        else
+                        {
+                            sudoku[row, col].Value = number;
+                            inputCells[row, col] = true;
+                        }
+                        counter++;
+                    }
+                }
+
+                var listWithCellsWithError = sudokuSolver.GetAllCellsWithError(sudoku, inputCells, false);
+
+                ColorTheCellsWithError(listWithCellsWithError);
                 MessageBox.Show("You have some errors!");
                 return;
             }
 
             MessageBox.Show("You are doing great!");
-        }
+        }       
 
         private void PrintSudoku(object sender, EventArgs e)
         {
@@ -767,6 +824,16 @@ namespace Sudoku
             storyboard.Begin(this);
 
             checkBox.IsEnabled = true;
+        }
+
+        private void ColorTheCellsWithError(List<SudokuCell> listWithCellsWithError)
+        {
+            foreach (var cell in listWithCellsWithError)
+            {
+                var index = cell.Row * 9 + cell.Col;
+                var textBox = FindName("TextBox" + index) as TextBox;
+                textBox.Background = new SolidColorBrush(Color.FromRgb(249, 112, 142));
+            }
         }
         #endregion
         #region Window Controls
